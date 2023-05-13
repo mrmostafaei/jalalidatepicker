@@ -1,0 +1,19 @@
+name: jalali_calendar
+description: Calendar , Datepicker and Date Convertor For Persian Date(Jalali/Shamsi date) with holiday
+version: 1.0.4
+homepage: https://github.com/irdeveloper89/jalali_calendar
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+  flutter: ">=1.1.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  jiffy: ^4.1.0
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
