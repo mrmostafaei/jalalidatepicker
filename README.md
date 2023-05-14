@@ -166,4 +166,4 @@ print("Parse Jalali To Gregorian ${persianDate.jalaliToGregorian("1368-05-30 19:
 
 
 ## bug report
-Contact me if you have any problems with this library or have any suggestion [tracker]:j.info@milad-tech.com
+Contact me if you have any problems with this library or have any suggestion [tracker]:info@milad-tech.com
