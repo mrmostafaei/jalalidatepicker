@@ -1,3 +1,8 @@
+## 1.0.4
+* Upgrade dart 3
+* fixed bugs
+* format code
+
 ## 1.0.3+1
 * format code
 

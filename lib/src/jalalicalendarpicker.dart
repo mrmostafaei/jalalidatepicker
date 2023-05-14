@@ -7,7 +7,6 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:jalalidatepicker/jalalidatepicker.dart';
 import 'package:jiffy/jiffy.dart';
 
@@ -50,10 +49,7 @@ class _DatePickerHeader extends StatelessWidget {
     required this.mode,
     required this.onModeChanged,
     required this.orientation,
-  })  : assert(selectedDate != null),
-        assert(mode != null),
-        assert(orientation != null),
-        super(key: key);
+  })  : super(key: key);
 
   final DateTime selectedDate;
   final DatePickerMode mode;
@@ -72,7 +68,7 @@ class _DatePickerHeader extends StatelessWidget {
 
     Color? dayColor;
     Color? yearColor;
-    switch (themeData.primaryColorBrightness) {
+    switch (themeData.colorScheme.brightness) {
       case Brightness.light:
         dayColor = mode == DatePickerMode.day ? Colors.black87 : Colors.black54;
         yearColor = mode == DatePickerMode.year ? Colors.black87 : Colors.black54;
@@ -82,8 +78,8 @@ class _DatePickerHeader extends StatelessWidget {
         yearColor = mode == DatePickerMode.year ? Colors.white : Colors.white70;
         break;
     }
-    final TextStyle dayStyle = headerTextTheme.bodyText1!.copyWith(color: dayColor, height: 1.4, fontSize: 23.0);
-    final TextStyle yearStyle = headerTextTheme.subtitle2!.copyWith(color: yearColor, height: 1.4);
+    final TextStyle dayStyle = headerTextTheme.bodyLarge!.copyWith(color: dayColor, height: 1.4, fontSize: 23.0);
+    final TextStyle yearStyle = headerTextTheme.titleSmall!.copyWith(color: yearColor, height: 1.4);
 
     Color? backgroundColor;
     switch (themeData.brightness) {
@@ -91,7 +87,7 @@ class _DatePickerHeader extends StatelessWidget {
         backgroundColor = themeData.primaryColor;
         break;
       case Brightness.dark:
-        backgroundColor = themeData.backgroundColor;
+        backgroundColor = themeData.colorScheme.background;
         break;
     }
 
@@ -236,11 +232,7 @@ class DayPicker extends StatelessWidget {
     required this.lastDate,
     required this.displayedMonth,
     this.selectableDayPredicate,
-  })  : assert(selectedDate != null),
-        assert(currentDate != null),
-        assert(onChanged != null),
-        assert(displayedMonth != null),
-        assert(!firstDate.isAfter(lastDate)),
+  })  : assert(!firstDate.isAfter(lastDate)),
         assert(selectedDate.isAfter(firstDate) || selectedDate.isAtSameMomentAs(firstDate)),
         super(key: key);
 
@@ -415,23 +407,23 @@ class DayPicker extends StatelessWidget {
             (selectableDayPredicate != null && !selectableDayPredicate!(dayToBuild));
 
         BoxDecoration? decoration;
-        TextStyle? itemStyle = themeData.textTheme.bodyText1;
+        TextStyle? itemStyle = themeData.textTheme.bodyLarge;
 
         final bool isSelectedDay = selectedPersainDate.year == getPearData.year &&
             selectedPersainDate.month == getPearData.month &&
             selectedPersainDate.day == day;
         if (isSelectedDay) {
           // The selected day gets a circle background highlight, and a contrasting text color.
-          itemStyle = themeData.textTheme.bodyText2;
+          itemStyle = themeData.textTheme.bodyMedium;
           decoration = BoxDecoration(color: themeData.colorScheme.secondary, shape: BoxShape.circle);
         } else if (disabled) {
-          itemStyle = themeData.textTheme.bodyText1!.copyWith(color: themeData.disabledColor);
+          itemStyle = themeData.textTheme.bodyLarge!.copyWith(color: themeData.disabledColor);
         } else if (currentPDate.year == getPearData.year && currentPDate.month == getPearData.month && currentPDate.day == day) {
           // The current day gets a different text color.
-          itemStyle = themeData.textTheme.bodyText2!.copyWith(color: themeData.secondaryHeaderColor);
+          itemStyle = themeData.textTheme.bodyMedium!.copyWith(color: themeData.secondaryHeaderColor);
         } else if (getHolidy.isHoliday) {
           // The current day gets a different text color.
-          itemStyle = themeData.textTheme.bodyText2!.copyWith(color: Colors.red);
+          itemStyle = themeData.textTheme.bodyMedium!.copyWith(color: Colors.red);
         }
         Widget dayWidget = Container(
           decoration: decoration,
@@ -478,7 +470,7 @@ class DayPicker extends StatelessWidget {
                   child: ExcludeSemantics(
                     child: Text(
                       "${pdate.monthname}  ${pdate.year}",
-                      style: themeData.textTheme.subtitle1,
+                      style: themeData.textTheme.titleMedium,
                     ),
                   ),
                 ),
@@ -519,9 +511,7 @@ class MonthPicker extends StatefulWidget {
     required this.firstDate,
     required this.lastDate,
     this.selectableDayPredicate,
-  })  : assert(selectedDate != null),
-        assert(onChanged != null),
-        assert(!firstDate.isAfter(lastDate)),
+  })  : assert(!firstDate.isAfter(lastDate)),
         assert(selectedDate.isAfter(firstDate) || selectedDate.isAtSameMomentAs(firstDate)),
         super(key: key);
 
@@ -774,9 +764,7 @@ class YearPicker extends StatefulWidget {
     required this.onChanged,
     required this.firstDate,
     required this.lastDate,
-  })  : assert(selectedDate != null),
-        assert(onChanged != null),
-        assert(!firstDate.isAfter(lastDate)),
+  })  : assert(!firstDate.isAfter(lastDate)),
         super(key: key);
 
   /// The currently selected date.
@@ -814,7 +802,7 @@ class _YearPickerState extends State<YearPicker> {
   Widget build(BuildContext context) {
     assert(debugCheckHasMaterial(context));
     final ThemeData themeData = Theme.of(context);
-    final TextStyle? style = themeData.textTheme.bodyText1;
+    final TextStyle? style = themeData.textTheme.bodyLarge;
 
     return ListView.builder(
       controller: scrollController,
@@ -825,7 +813,7 @@ class _YearPickerState extends State<YearPicker> {
         final bool isSelected = year == widget.selectedDate.year;
         var dateee = DateTime(year, widget.selectedDate.month, widget.selectedDate.day);
         var pYear = PersianDate.pDate(gregorian: dateee.toString());
-        final TextStyle? itemStyle = isSelected ? themeData.textTheme.bodyText1!.copyWith(color: themeData.colorScheme.secondary) : style;
+        final TextStyle? itemStyle = isSelected ? themeData.textTheme.bodyLarge!.copyWith(color: themeData.colorScheme.secondary) : style;
         return InkWell(
           key: ValueKey<int>(year),
           onTap: () {
@@ -1009,7 +997,7 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
 
   Widget? _buildPicker() {
     assert(_mode != null);
-    switch (_mode) {
+    switch (_mode!) {
       case DatePickerMode.day:
         return MonthPicker(
           key: _pickerKey,
@@ -1028,7 +1016,6 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
           lastDate: widget.lastDate!,
         );
     }
-    return null;
   }
 
   @override
@@ -1053,7 +1040,6 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
       ],
     );
     final Dialog dialog = Dialog(child: OrientationBuilder(builder: (BuildContext context, Orientation orientation) {
-      assert(orientation != null);
       final Widget header = _DatePickerHeader(
         selectedDate: _selectedDate!,
         mode: _mode!,
@@ -1172,8 +1158,6 @@ Future<String?> jalaliCalendarPicker({
   assert(!firstDate.isAfter(lastDate), 'lastDate must be on or after firstDate');
   assert(selectableDayPredicate == null || selectableDayPredicate(initialDate),
       'Provided initialDate must satisfy provided selectableDayPredicate');
-  assert(initialDatePickerMode != null, 'initialDatePickerMode must not be null');
-  assert(context != null);
   assert(debugCheckHasMaterialLocalizations(context));
 
   Widget child = _DatePickerDialog(
@@ -1189,12 +1173,11 @@ Future<String?> jalaliCalendarPicker({
     initialTime: initialTime ?? TimeOfDay.now(),
   );
 
-  if (textDirection != null) {
     child = Directionality(
       textDirection: textDirection,
       child: child,
     );
-  }
+
 
   if (locale != null) {
     child = Localizations.override(
