@@ -1,4 +1,30 @@
 
+## Jalali/Shamsi Calendar  Datepicker and TimePicker
+Calendar , Datepicker and Date Convertor For Persian Date(Jalali/Shamsi date) with holiday for Android and Ios
+
+Based on Material  Flutter DatePicker And TimePicker
+
+
+![](https://github.com/mrmostafaei/jalalidatepicker/blob/master/screenshots/screenshots.gif)
+
+## Usage
+
+## Import this line in Flutter pubspec
+```dart
+jalalidatepicker: <Last Version>
+```
+## To  Use Calendar Or DatePicker  , Import this line to your dart file
+```dart
+import 'package:jalalidatepicker/jalali_calendar.dart';
+```
+## To  Use date Convertor , Import this line to your dart file
+```dart
+import 'package:persian_date/persian_date.dart';
+```
+
+After import library,  to show the calendar you can use jalaliCalendarPicker() constructor method , on the constructor `context` is important
+if you want to return the selected date to Gregorian, on the constructor set the convertToGregorian to true
+
 ## This sample return the selected date as Jalali(شمسی)
 ```dart
 Future _selectDate() async {
