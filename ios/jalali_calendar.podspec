@@ -2,7 +2,7 @@
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
 Pod::Spec.new do |s|
-  s.name             = 'jalali_calendar'
+  s.name             = 'jalalidatepicker'
   s.version          = '0.0.1'
   s.summary          = 'jalali calendar'
   s.description      = <<-DESC

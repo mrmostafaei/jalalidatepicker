@@ -1,4 +1,4 @@
-group 'ir.javadzobeidi.jalali.calendar.jalalicalendar'
+group 'com.miladmostafaei.jalali.calendar.jalalicalendar'
 version '1.0-SNAPSHOT'
 
 buildscript {

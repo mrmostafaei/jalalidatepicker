@@ -1,4 +1,4 @@
-package ir.javadzobeidi.jalali.calendar.jalalicalendar;
+package com.miladmostafaei.jalali.calendar.jalalicalendar;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -10,7 +10,7 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 public class JalaliCalendarPlugin implements MethodCallHandler {
   /** Plugin registration. */
   public static void registerWith(Registrar registrar) {
-    final MethodChannel channel = new MethodChannel(registrar.messenger(), "jalali_calendar");
+    final MethodChannel channel = new MethodChannel(registrar.messenger(), "jalalidatepicker");
     channel.setMethodCallHandler(new JalaliCalendarPlugin());
   }
 

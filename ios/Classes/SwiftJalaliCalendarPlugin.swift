@@ -3,7 +3,7 @@ import UIKit
 
 public class SwiftJalaliCalendarPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "jalali_calendar", binaryMessenger: registrar.messenger())
+    let channel = FlutterMethodChannel(name: "jalalidatepicker", binaryMessenger: registrar.messenger())
     let instance = SwiftJalaliCalendarPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
