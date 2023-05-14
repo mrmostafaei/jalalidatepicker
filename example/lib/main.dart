@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:jalali_calendar/jalali_calendar.dart';
-import 'package:persian_date/persian_date.dart';
+import 'package:jalalidatepicker/src/datepicker.dart';
+import 'package:jalalidatepicker/src/jalalicalendarpicker.dart';
+import 'package:jalalidatepicker/src/persian_date.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -16,7 +17,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _State extends State<MyApp> {
-  PersianDate persianDate = PersianDate(format: "yyyy/mm/dd  \n DD  , d  MM  ");
+  PersianDate persianDate = PersianDate("yyyy/mm/dd  \n DD  , d  MM  ");
   String _datetime = '';
   String _format = 'yyyy-mm-dd';
   String _value = '';
@@ -24,7 +25,7 @@ class _State extends State<MyApp> {
   DateTime selectedDate = DateTime.now();
 
   Future _selectDate() async {
-    String picked = await jalaliCalendarPicker(
+    String? picked = await jalaliCalendarPicker(
         context: context,
         convertToGregorian: false,
         showTimePicker: true,
@@ -35,8 +36,6 @@ class _State extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    print(
-        "Parse TO Format ${persianDate.gregorianToJalali("2019-02-20T00:19:54.000Z", "yyyy-m-d hh:nn")}");
   }
 
   @override
@@ -55,16 +54,16 @@ class _State extends State<MyApp> {
                   Text('  مبدّل تاریخ و زمان ,‌ تاریخ هجری شمسی '),
                   Text(' تقویم شمسی '),
                   Text('date picker شمسی '),
-                  new RaisedButton(
+                  new ElevatedButton(
                     onPressed: _selectDate,
                     child: new Text('نمایش تقویم'),
                   ),
-                  new RaisedButton(
+                  new ElevatedButton(
                     onPressed: _showDatePicker,
                     child: new Text('نمایش دیت پیکر'),
                   ),
                   Text(
-                    "\nزمان و تاریخ فعلی سیستم :  ${persianDate.now}",
+                    "\nزمان و تاریخ فعلی سیستم :  ${persianDate.getNow}",
                     textAlign: TextAlign.center,
                     textDirection: TextDirection.rtl,
                   ),
@@ -111,10 +110,10 @@ class _State extends State<MyApp> {
         ),
         dateFormat: _format, onChanged: (year, month, day) {
       if (!showTitleActions) {
-        _changeDatetime(year, month, day);
+        _changeDatetime(year!, month!, day!);
       }
     }, onConfirm: (year, month, day) {
-      _changeDatetime(year, month, day);
+      _changeDatetime(year!, month!, day!);
       _valuePiker =
           " تاریخ ترکیبی : $_datetime  \n سال : $year \n  ماه :   $month \n  روز :  $day";
     });

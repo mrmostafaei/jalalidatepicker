@@ -1,7 +1,7 @@
-name: jalali_calendar
-description: Calendar , Datepicker and Date Convertor For Persian Date(Jalali/Shamsi date) with holiday
+name: jalalidatepicker
+description: Calendar , Datepicker and Date Convertor For Persian Date(Jalali or Shamsi date) with holiday
 version: 1.0.4
-homepage: https://github.com/irdeveloper89/jalali_calendar
+homepage: https://github.com/mrmostafaei/jalalidatepicker
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
