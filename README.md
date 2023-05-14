@@ -15,7 +15,7 @@ jalalidatepicker: <Last Version>
 ```
 ## To  Use Calendar Or DatePicker  , Import this line to your dart file
 ```dart
-import 'package:jalalidatepicker/jalali_calendar.dart';
+import 'package:jalalidatepicker/jalalidatepicker.dart';
 ```
 ## To  Use date Convertor , Import this line to your dart file
 ```dart

@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:jalalidatepicker/jalali_calendar.dart';
+import 'package:jalalidatepicker/jalalidatepicker.dart';
 import 'package:jiffy/jiffy.dart';
 
 /// Initial display mode of the date picker dialog.

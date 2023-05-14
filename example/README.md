@@ -1,6 +1,6 @@
-# jalali_calendar_example
+# jalalidatepicker_example
 
-Demonstrates how to use the jalali_calendar plugin.
+Demonstrates how to use the jalalidatepicker plugin.
 
 ## Getting Started
 

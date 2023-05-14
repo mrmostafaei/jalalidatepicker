@@ -1,5 +1,5 @@
 #import "JalaliCalendarPlugin.h"
-#import <jalalidatepicker/jalali_calendar-Swift.h>
+#import <jalalidatepicker/jalalidatepicker-Swift.h>
 
 @implementation JalaliCalendarPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {

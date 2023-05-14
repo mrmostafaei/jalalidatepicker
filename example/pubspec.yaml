@@ -1,5 +1,5 @@
-name: jalali_calendar_example
-description: Demonstrates how to use the jalali_calendar plugin.
+name: jalalidatepicker_example
+description: Demonstrates how to use the jalalidatepicker plugin.
 publish_to: 'none'
 
 environment:
@@ -18,7 +18,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  jalali_calendar:
+  jalalidatepicker:
     path: ../
 
 # For information on the generic Dart part of this file, see the
